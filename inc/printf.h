@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 11:23:53 by tjans         #+#    #+#                 */
-/*   Updated: 2019/11/30 20:33:00 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/04 19:06:18 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ typedef struct	s_flags
 {
 	char	pad_neg_f_width;
 	char	pad_zeroes;
+	char	min_field_width;
 	char	precision;
 
+	int		min_field_width_n;
 	int		precision_n;
 }				t_flags;
 
@@ -35,7 +37,7 @@ t_ctable		*find_conv(char c);
 char			*ltoa_base_unsigned(unsigned long n, int base);
 char			*ltoa_signed(long n);
 
-t_flags			*parse_flags(const char **fmt);
+t_flags			*parse_flags(const char **fmt, va_list args);
 char			*format_str(const char *fmt, va_list args);
 int				ft_printf(const char *fmt, ...);
 int				ft_vsprintf(char *str, const char *fmt, va_list args);

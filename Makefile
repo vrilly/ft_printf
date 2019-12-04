@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 18:31:12 by tjans         #+#    #+#                  #
-#    Updated: 2019/11/30 16:43:35 by tjans         ########   odam.nl          #
+#    Updated: 2019/12/04 20:16:02 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS	:=	-g -c -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out
 
 S_PRINTF	:= printf.c parse_flag.c formatter.c ctable.c nconv.c
 S_CONV		:= p_sign.c p_str.c p_int.c p_char.c p_uint.c p_ptr.c p_hex.c
-S_FMT		:= prefix_str.c pad_str.c strupper.c
+S_FMT		:= prefix_str.c pad_str.c strupper.c field_width.c
 
 SRCS	:= $(S_PRINTF) $(S_CONV) $(S_FMT)
 HDRS	:= printf.h conversions.h formatters.h

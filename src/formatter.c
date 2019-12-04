@@ -6,13 +6,14 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 20:37:07 by tjans         #+#    #+#                 */
-/*   Updated: 2019/11/30 20:29:44 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/04 19:57:42 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <libft.h>
 #include "printf.h"
+#include "formatters.h"
 
 static char	*extract_str(const char **str)
 {
@@ -35,12 +36,19 @@ static char	*eval_conv(const char **fmt, va_list args)
 	if (**fmt != '%')
 		return (extract_str(fmt));
 	(*fmt)++;
-	flags = parse_flags(fmt);
-	converter = find_conv(**fmt);
+	flags = parse_flags(fmt, args);
+	converter = NULL;
+	while (!converter && **fmt != '\0')
+	{
+		converter = find_conv(**fmt);
+		if (!converter)
+			(*fmt)++;
+	}
 	if (!converter)
 		ret = ft_strdup("");
 	else
 		ret = converter->conv(args, flags);
+	ret = apply_field_width(ret, flags);
 	if (**fmt)
 		(*fmt)++;
 	free(flags);
