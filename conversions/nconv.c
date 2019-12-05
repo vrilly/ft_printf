@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/27 12:08:08 by tjans         #+#    #+#                 */
-/*   Updated: 2019/11/30 15:29:10 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:56:45 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		ft_strrev(char *s)
 	}
 }
 
-static void	ltoa_char_processor(char *str, unsigned long n, int base)
+static void		ltoa_char_processor(char *str, unsigned long n, int base)
 {
 	unsigned int	mod_result;
 
@@ -45,7 +45,7 @@ static void	ltoa_char_processor(char *str, unsigned long n, int base)
 		*str = '\0';
 }
 
-char	*ltoa_base_unsigned(unsigned long n, int base)
+char			*ltoa_base_unsigned(unsigned long n, int base)
 {
 	char	*str;
 
@@ -61,7 +61,7 @@ char	*ltoa_base_unsigned(unsigned long n, int base)
 	return (str);
 }
 
-char	*ltoa_signed(long n)
+char			*ltoa_signed(long n)
 {
 	char	*str;
 	char	neg;

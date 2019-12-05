@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 20:37:07 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 16:42:44 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:48:48 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	*eval_conv(const char **fmt, va_list args)
 	return (ret);
 }
 
-char	*format_str(const char *fmt, va_list args)
+char		*format_str(const char *fmt, va_list args)
 {
 	t_strlist	*strlist;
 	char		*result;

@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 11:29:16 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 19:13:22 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:50:30 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ static int	get_precision(const char **fmt, va_list args, t_flags *flags)
 	{
 		precision = va_arg(args, int);
 		(*fmt)++;
-		if (precision < 0 && !flags->precision)
+		if (precision < 0)
 		{
 			precision *= -1;
-			flags->pad_neg_f_width = 1;
-		} else if (precision < 0)
-		{
-			flags->precision = 0;
-			precision *= -1;
+			if (!flags->precision)
+				flags->pad_neg_f_width = 1;
+			else
+				flags->precision = 0;
 		}
 		return (precision);
 	}

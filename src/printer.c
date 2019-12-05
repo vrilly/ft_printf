@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 16:30:19 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 18:48:11 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:48:33 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	eval_conv(const char **fmt, va_list args)
 {
 	t_flags		*flags;
 	t_ctable	*converter;
-	char 		*ret;
+	char		*ret;
 	int			ret_len;
 
 	if (**fmt != '%')

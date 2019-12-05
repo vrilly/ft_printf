@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/29 19:08:28 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 14:52:50 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:56:30 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char	*p_ptr(va_list arg, t_flags *flags)
 		ptr_addr_str = apply_field_width(ptr_addr_str, flags);
 	ptr_addr_str = prefix_hex(ptr_addr_str);
 	ptr_addr_str = apply_field_width(ptr_addr_str, flags);
-	return(ptr_addr_str);
+	return (ptr_addr_str);
 }
