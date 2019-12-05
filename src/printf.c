@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 18:29:47 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/04 18:46:12 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 16:44:56 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@
 int		ft_printf(const char *fmt, ...)
 {
 	va_list	args;
-	char	*ret;
-	size_t	len;
+	int		ret;
 
 	va_start(args, fmt);
-	ret = format_str(fmt, args);
+	ret = print_str(fmt, args);
 	va_end(args);
-	ft_putstr_fd(ret, 1);
-	len = ft_strlen(ret);
-	free(ret);
-	return (len);
+	return (ret);
 }

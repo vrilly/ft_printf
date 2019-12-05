@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 13:39:51 by tjans         #+#    #+#                 */
-/*   Updated: 2019/11/30 20:32:09 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:10:52 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*p_str(va_list arg, t_flags *flags)
 {
 	char	*str;
 	char	*ret;
-	size_t	ret_s;
+	int		ret_s;
 
 	str = va_arg(arg, char*);
 	if (str == NULL)
-		return(ft_strdup("(null)"));
+		str = ft_strdup("(null)");
 	if (flags->precision)
 		ret_s = flags->precision_n + 1;
 	else

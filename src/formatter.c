@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 20:37:07 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/04 19:57:42 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 16:42:44 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,19 @@ char	*format_str(const char *fmt, va_list args)
 {
 	t_strlist	*strlist;
 	char		*result;
+	char		*conv_res;
 
-	strlist = strlist_create(eval_conv(&fmt, args));
+	conv_res = eval_conv(&fmt, args);
+	if (conv_res == NULL)
+		return (ft_strdup(""));
+	strlist = strlist_create(conv_res);
 	while (*fmt)
-		strlist_append(strlist, eval_conv(&fmt, args));
+	{
+		conv_res = eval_conv(&fmt, args);
+		if (conv_res == NULL)
+			break ;
+		strlist_append(strlist, conv_res);
+	}
 	result = strlist_join(strlist);
 	strlist_free(&strlist);
 	return (result);

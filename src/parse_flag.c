@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 11:29:16 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/04 19:14:26 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 19:13:22 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <libft.h>
 #include "printf.h"
 
-static int	get_precision(const char **fmt, va_list args)
+static int	get_precision(const char **fmt, va_list args, t_flags *flags)
 {
 	int	precision;
 
@@ -23,6 +23,15 @@ static int	get_precision(const char **fmt, va_list args)
 	{
 		precision = va_arg(args, int);
 		(*fmt)++;
+		if (precision < 0 && !flags->precision)
+		{
+			precision *= -1;
+			flags->pad_neg_f_width = 1;
+		} else if (precision < 0)
+		{
+			flags->precision = 0;
+			precision *= -1;
+		}
 		return (precision);
 	}
 	while (ft_isdigit(**fmt))
@@ -36,26 +45,29 @@ static int	get_precision(const char **fmt, va_list args)
 
 static void	set_flag(t_flags *flags, const char **fmt, va_list args)
 {
-	if (**fmt == '-')
+	while (**fmt == '-' || **fmt == '0')
 	{
-		flags->pad_neg_f_width = 1;
-		(*fmt)++;
-	}
-	if (**fmt == '0')
-	{
-		flags->pad_zeroes = 1;
-		(*fmt)++;
+		if (**fmt == '-')
+		{
+			flags->pad_neg_f_width = 1;
+			(*fmt)++;
+		}
+		if (**fmt == '0')
+		{
+			flags->pad_zeroes = 1;
+			(*fmt)++;
+		}
 	}
 	if (ft_isdigit(**fmt) || **fmt == '*')
 	{
 		flags->min_field_width = 1;
-		flags->min_field_width_n = get_precision(fmt, args);
+		flags->min_field_width_n = get_precision(fmt, args, flags);
 	}
 	if (**fmt == '.')
 	{
 		(*fmt)++;
 		flags->precision = 1;
-		flags->precision_n = get_precision(fmt, args);
+		flags->precision_n = get_precision(fmt, args, flags);
 	}
 }
 
@@ -63,6 +75,7 @@ t_flags		*parse_flags(const char **fmt, va_list args)
 {
 	t_flags	*flags;
 
+	(*fmt)++;
 	flags = ft_calloc(1, sizeof(t_flags));
 	if (!flags)
 		return (NULL);

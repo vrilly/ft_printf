@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/29 19:08:28 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/01 18:44:35 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/05 14:52:50 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,11 @@ char	*p_ptr(va_list arg, t_flags *flags)
 	ptr_addr_str = ltoa_base_unsigned((unsigned long)ptr, 16);
 	if (flags->precision)
 		ptr_addr_str = pad_str(ptr_addr_str, flags->precision_n, '0');
-	return(prefix_hex(ptr_addr_str));
+	if (flags->min_field_width_n >= 2 && flags->pad_zeroes)
+		flags->min_field_width_n -= 2;
+	if (flags->pad_zeroes)
+		ptr_addr_str = apply_field_width(ptr_addr_str, flags);
+	ptr_addr_str = prefix_hex(ptr_addr_str);
+	ptr_addr_str = apply_field_width(ptr_addr_str, flags);
+	return(ptr_addr_str);
 }
