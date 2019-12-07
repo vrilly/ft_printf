@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   prefix_str.c                                       :+:    :+:            */
+/*   memcpy.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*   By: tjans <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/30 15:58:54 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:31:51 by tjans         ########   odam.nl         */
+/*   Created: 2019/10/28 15:58:52 by tjans         #+#    #+#                 */
+/*   Updated: 2019/12/07 23:13:44 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "formatters.h"
 
-char	*prefix_hex(char *str)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*newstr;
+	unsigned char	*csrc;
+	unsigned char	*cdst;
 
-	newstr = ft_strjoin("0x", str);
-	free(str);
-	return (newstr);
+	csrc = (unsigned char*)src;
+	cdst = (unsigned char*)dst;
+	if (!src && !dst)
+		return (NULL);
+	while (n)
+	{
+		*cdst = *csrc;
+		csrc++;
+		cdst++;
+		n--;
+	}
+	return (dst);
 }

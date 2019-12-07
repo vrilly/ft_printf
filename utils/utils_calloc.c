@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   p_sign.c                                           :+:    :+:            */
+/*   calloc.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*   By: tjans <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/26 12:57:32 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:04 by tjans         ########   odam.nl         */
+/*   Created: 2019/10/29 15:49:41 by tjans         #+#    #+#                 */
+/*   Updated: 2019/12/07 23:13:49 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "printf.h"
-#include "conversions.h"
 
-char	*p_sign(va_list arg, t_flags *flags)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (!arg || !flags)
-		return (ft_strdup("%"));
-	return (ft_strdup("%"));
+	unsigned char	*ptr;
+	size_t			bytes;
+
+	bytes = count * size;
+	ptr = malloc(bytes);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, bytes);
+	return ((void*)ptr);
 }

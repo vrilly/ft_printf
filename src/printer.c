@@ -6,12 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 16:30:19 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 21:31:20 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 23:28:58 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <libft.h>
+#include "utils.h"
 #include <unistd.h>
 #include "printf.h"
 #include "formatters.h"

@@ -6,12 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/29 19:08:28 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 21:21:30 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 23:26:58 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <libft.h>
+#include "utils.h"
 #include "conversions.h"
 #include "formatters.h"
 

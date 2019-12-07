@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   p_sign.c                                           :+:    :+:            */
+/*   strdup.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*   By: tjans <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/26 12:57:32 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:04 by tjans         ########   odam.nl         */
+/*   Created: 2019/10/29 15:57:41 by tjans         #+#    #+#                 */
+/*   Updated: 2019/12/07 23:14:24 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "printf.h"
-#include "conversions.h"
 
-char	*p_sign(va_list arg, t_flags *flags)
+char	*ft_strdup(const char *s1)
 {
-	if (!arg || !flags)
-		return (ft_strdup("%"));
-	return (ft_strdup("%"));
+	int		len;
+	int		i;
+	char	*dup;
+
+	i = 0;
+	len = ft_strlen(s1);
+	dup = malloc(sizeof(char) * len + 1);
+	if (!dup)
+		return (NULL);
+	while (i < len)
+	{
+		dup[i] = s1[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

@@ -6,13 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 15:56:40 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 21:20:19 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 23:28:10 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORMATTERS_H
 # define FORMATTERS_H
-# include <libft.h>
 # include <stdlib.h>
 # include "printf.h"
 

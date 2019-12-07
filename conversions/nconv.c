@@ -6,11 +6,11 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/27 12:08:08 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 19:56:45 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 23:25:10 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "utils.h"
 #include <stdlib.h>
 #include <limits.h>
 #include "conversions.h"

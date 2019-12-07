@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   p_sign.c                                           :+:    :+:            */
+/*   memset.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*   By: tjans <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/26 12:57:32 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:04 by tjans         ########   odam.nl         */
+/*   Created: 2019/10/28 15:39:54 by tjans         #+#    #+#                 */
+/*   Updated: 2019/12/07 23:14:09 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "printf.h"
-#include "conversions.h"
 
-char	*p_sign(va_list arg, t_flags *flags)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (!arg || !flags)
-		return (ft_strdup("%"));
-	return (ft_strdup("%"));
+	unsigned char	*str;
+
+	str = (unsigned char *)b;
+	while (len)
+	{
+		*str = c;
+		str++;
+		len--;
+	}
+	return (b);
 }

@@ -6,12 +6,12 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 11:29:16 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 19:50:30 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 23:28:51 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <libft.h>
+#include "utils.h"
 #include "printf.h"
 
 static int	get_precision(const char **fmt, va_list args, t_flags *flags)

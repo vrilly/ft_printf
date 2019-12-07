@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   p_sign.c                                           :+:    :+:            */
+/*   bzero.c                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*   By: tjans <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/26 12:57:32 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:04 by tjans         ########   odam.nl         */
+/*   Created: 2019/10/28 17:26:43 by tjans         #+#    #+#                 */
+/*   Updated: 2019/12/07 23:10:52 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "printf.h"
-#include "conversions.h"
 
-char	*p_sign(va_list arg, t_flags *flags)
+void	ft_bzero(void *s, size_t n)
 {
-	if (!arg || !flags)
-		return (ft_strdup("%"));
-	return (ft_strdup("%"));
+	ft_memset(s, 0, n);
 }

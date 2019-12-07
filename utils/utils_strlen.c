@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   p_sign.c                                           :+:    :+:            */
+/*   strlen.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: tjans <tjans@student.codam.nl>               +#+                     */
+/*   By: tjans <marvin@codam.nl>                      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/26 12:57:32 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:04 by tjans         ########   odam.nl         */
+/*   Created: 2019/10/29 10:31:44 by tjans         #+#    #+#                 */
+/*   Updated: 2019/12/07 23:15:46 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "printf.h"
-#include "conversions.h"
 
-char	*p_sign(va_list arg, t_flags *flags)
+size_t	ft_strclen(const char *s, int c)
 {
-	if (!arg || !flags)
-		return (ft_strdup("%"));
-	return (ft_strdup("%"));
+	size_t	i;
+
+	i = 0;
+	while (s[i] && s[i] != (unsigned char)c)
+		i++;
+	return (i);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	return (ft_strclen(s, 0));
 }
