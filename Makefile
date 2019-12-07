@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 18:31:12 by tjans         #+#    #+#                  #
-#    Updated: 2019/12/05 16:44:13 by tjans         ########   odam.nl          #
+#    Updated: 2019/12/07 22:21:29 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ INC_DIR	:= inc
 OBJ_DIR := obj
 
 TARGET	:= libftprintf.a
-LIBFT	:= libft
 VPATH	:= $(SRC_DIR)
 
 CFLAGS	:=	-g -c -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out
@@ -32,10 +31,7 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/,$(HDRS)) | dirs
 	@echo CC $<
 	@$(CC) $(CFLAGS) -o $@ $<
 
-all: $(LIBFT)/out/libft.a $(TARGET)
-
-$(LIBFT)/out/libft.a:
-	$(MAKE) -C $(LIBFT)
+all: $(TARGET)
 
 $(TARGET): $(addprefix $(OBJ_DIR)/,$(OBJS))
 	@echo Linking $(TARGET)
@@ -64,4 +60,4 @@ dirs:
 	@echo ---Start---
 	@mkdir -p $(OBJ_DIR)
 
-.PHONY: libft dirs
+.PHONY: dirs
