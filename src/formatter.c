@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 20:37:07 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 19:48:48 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 21:30:41 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*eval_conv(const char **fmt, va_list args)
 		ret = ft_strdup("");
 	else
 		ret = converter->conv(args, flags);
-	ret = apply_field_width(ret, flags);
+	apply_field_width(&ret, flags);
 	if (**fmt)
 		(*fmt)++;
 	free(flags);

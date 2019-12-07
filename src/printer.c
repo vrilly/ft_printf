@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 16:30:19 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 19:48:33 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/07 21:31:20 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include <unistd.h>
 #include "printf.h"
 #include "formatters.h"
-
-static void	prt_nul(void)
-{
-	const char	nul = '\0';
-
-	write(1, &nul, 1);
-}
 
 static int	prt_str(const char **str)
 {
@@ -53,14 +46,10 @@ static int	eval_conv(const char **fmt, va_list args)
 		return (0);
 	else
 		ret = converter->conv(args, flags);
-	ret = apply_field_width(ret, flags);
+	ret_len = apply_field_width(&ret, flags);
 	if (**fmt)
 		(*fmt)++;
-	ret_len = ft_strlen(ret);
 	write(1, ret, ret_len);
-	ret_len += flags->print_null_term;
-	if (flags->print_null_term && !flags->pad_neg_f_width)
-		prt_nul();
 	free(flags);
 	free(ret);
 	return (ret_len);
