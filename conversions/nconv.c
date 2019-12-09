@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/27 12:08:08 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:25:10 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:51:19 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ char			*ltoa_signed(long n)
 	if (neg)
 		n *= -1;
 	str = malloc(sizeof(char) * 32);
+	if (!str)
+		return (NULL);
 	ltoa_char_processor(str, n, 10);
 	if (neg)
 		ft_strlcat(str, "-", 32);

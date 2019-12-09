@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/30 16:26:25 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:25 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:57:34 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char		*pad_str(char *str, int pad_nums, char pad_char)
 		return (str);
 	is_neg = (*str == '-');
 	newstr = ft_calloc(pad_nums + 1 + is_neg, sizeof(char));
+	if (!newstr)
+		return (str);
 	if (is_neg)
 		newstr[0] = '-';
 	ft_memset(newstr + is_neg, pad_char, pad_nums - s_len + is_neg);
@@ -47,6 +49,8 @@ char		*pad_str_rev(char *str, int pad_nums, char pad_char)
 	if (s_len >= pad_nums)
 		return (str);
 	newstr = ft_calloc(pad_nums + 1, sizeof(char));
+	if (!newstr)
+		return (str);
 	ft_strlcpy(newstr, str, pad_nums + 1);
 	ft_memset(newstr + s_len, pad_char, pad_nums - s_len);
 	free(str);

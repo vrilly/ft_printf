@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 13:39:51 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/09 14:05:50 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:23:55 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	*p_null(t_flags *flags)
 	int		ret_s;
 
 	str = ft_strdup("(null)");
+	if (!str)
+		return (NULL);
 	if (flags->precision)
 		ret_s = flags->precision_n + 1;
 	else

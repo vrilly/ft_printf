@@ -6,14 +6,14 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 16:30:19 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/09 14:06:59 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:59:00 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "utils.h"
 #include <unistd.h>
 #include "printf.h"
+#include "utils.h"
 #include "formatters.h"
 
 static int	cleanup(int retval, int elements, ...)
@@ -42,6 +42,8 @@ static int	prt_str(const char **str)
 
 	s_len = ft_strclen(*str, '%');
 	ex = malloc(sizeof(char) * s_len + 1);
+	if (!ex)
+		return (0);
 	ft_strlcpy(ex, *str, s_len + 1);
 	*str += s_len;
 	write(1, ex, s_len);
@@ -65,10 +67,12 @@ static int	eval_conv(const char **fmt, va_list args)
 		converter = find_conv(**fmt);
 		(*fmt)++;
 	}
-	if (!converter)
+	if (!converter || !flags)
 		return (cleanup(0, 1, flags));
 	else
 		ret = converter->conv(args, flags);
+	if (ret == NULL)
+		return (cleanup(0, 1, flags));
 	ret_len = apply_field_width(&ret, flags);
 	if (**fmt)
 		(*fmt)++;

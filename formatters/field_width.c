@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/04 19:24:17 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:27:22 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:58:04 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int			apply_field_width(char **str, t_flags *flags)
 			s_len > INT_MAX)
 		return (s_len);
 	newstr = malloc(sizeof(char) * (flags->min_field_width_n + 1));
+	if (!newstr)
+		return (s_len);
 	ft_memset(newstr, pad_c, flags->min_field_width_n);
 	newstr[flags->min_field_width_n] = '\0';
 	if (flags->pad_neg_f_width)

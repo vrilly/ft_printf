@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 15:18:45 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/01 17:36:08 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:52:01 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*p_int(va_list arg, t_flags *flags)
 
 	i = va_arg(arg, int);
 	ret = ltoa_signed(i);
+	if (!ret)
+		return (NULL);
 	if (flags->precision)
 		ret = pad_str(ret, flags->precision_n, '0');
 	return (ret);
