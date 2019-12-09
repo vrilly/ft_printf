@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 16:30:19 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/09 13:32:22 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:06:59 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ static int	eval_conv(const char **fmt, va_list args)
 	if (**fmt != '%')
 		return (prt_str(fmt));
 	flags = parse_flags(fmt, args);
-	while (!(converter = find_conv(**fmt)) && **fmt != '\0')
+	converter = find_conv(**fmt);
+	while (!converter && **fmt != '\0')
+	{
+		converter = find_conv(**fmt);
 		(*fmt)++;
+	}
 	if (!converter)
 		return (cleanup(0, 1, flags));
 	else

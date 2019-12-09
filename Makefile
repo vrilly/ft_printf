@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 18:31:12 by tjans         #+#    #+#                  #
-#    Updated: 2019/12/07 23:31:37 by tjans         ########   odam.nl          #
+#    Updated: 2019/12/09 14:08:03 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRC_DIR	:= src conversions formatters utils
 INC_DIR	:= inc
 OBJ_DIR := obj
 
-TARGET	:= libftprintf.a
+NAME	:= libftprintf.a
 VPATH	:= $(SRC_DIR)
 
 CFLAGS	:=	-g -c -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out
@@ -34,10 +34,10 @@ $(OBJ_DIR)/%.o : %.c $(addprefix $(INC_DIR)/,$(HDRS)) | dirs
 	@echo CC $<
 	@$(CC) $(CFLAGS) -o $@ $<
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(addprefix $(OBJ_DIR)/,$(OBJS))
-	@echo Linking $(TARGET)
+$(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS))
+	@echo Linking $(NAME)
 	@$(AR) rcs $@ $^
 	@echo ---DONE---
 
@@ -47,7 +47,7 @@ clean:
 
 fclean: clean
 	@echo Removed output
-	@$(RM) $(TARGET)
+	@$(RM) $(NAME)
 
 re: fclean all
 
@@ -57,7 +57,7 @@ ftclean: fclean
 re_all: fclean ftclean all
 
 dirs:
-	@echo Compiling $(TARGET)...
+	@echo Compiling $(NAME)...
 	@echo Host: $$(uname -rms)
 	@echo CFLAGS: $(CFLAGS)
 	@echo ---Start---
