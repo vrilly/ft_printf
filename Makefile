@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 18:31:12 by tjans         #+#    #+#                  #
-#    Updated: 2019/12/09 14:08:03 by tjans         ########   odam.nl          #
+#    Updated: 2019/12/09 14:14:50 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ $(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS))
 clean:
 	@echo Removed intermediates
 	@$(RM) $(addprefix $(OBJ_DIR)/,$(OBJS))
+	@rmdir $(OBJ_DIR)
 
 fclean: clean
 	@echo Removed output
