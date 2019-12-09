@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 11:23:53 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/05 16:45:36 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 14:12:01 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ char			*ltoa_base_unsigned(unsigned long n, int base);
 char			*ltoa_signed(long n);
 
 t_flags			*parse_flags(const char **fmt, va_list args);
-char			*format_str(const char *fmt, va_list args);
 int				print_str(const char *fmt, va_list args);
 int				ft_printf(const char *fmt, ...);
-int				ft_vsprintf(char *str, const char *fmt, va_list args);
 
 #endif
