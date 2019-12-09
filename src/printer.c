@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 16:30:19 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:28:58 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/09 13:32:22 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 #include <unistd.h>
 #include "printf.h"
 #include "formatters.h"
+
+static int	cleanup(int retval, int elements, ...)
+{
+	va_list	arg;
+	int		i;
+	void	*mem_to_free;
+
+	i = 0;
+	va_start(arg, elements);
+	while (i < elements)
+	{
+		mem_to_free = va_arg(arg, void*);
+		if (mem_to_free != NULL)
+			free(mem_to_free);
+		i++;
+	}
+	va_end(arg);
+	return (retval);
+}
 
 static int	prt_str(const char **str)
 {
@@ -43,16 +62,14 @@ static int	eval_conv(const char **fmt, va_list args)
 	while (!(converter = find_conv(**fmt)) && **fmt != '\0')
 		(*fmt)++;
 	if (!converter)
-		return (0);
+		return (cleanup(0, 1, flags));
 	else
 		ret = converter->conv(args, flags);
 	ret_len = apply_field_width(&ret, flags);
 	if (**fmt)
 		(*fmt)++;
 	write(1, ret, ret_len);
-	free(flags);
-	free(ret);
-	return (ret_len);
+	return (cleanup(ret_len, 2, flags, ret));
 }
 
 int			print_str(const char *fmt, va_list args)
