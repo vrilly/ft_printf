@@ -6,7 +6,7 @@
 /*   By: tjans <tjans@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 11:29:16 by tjans         #+#    #+#                 */
-/*   Updated: 2019/12/07 23:28:51 by tjans         ########   odam.nl         */
+/*   Updated: 2019/12/18 18:49:02 by tjans         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	get_precision(const char **fmt, va_list args, t_flags *flags)
 	return (precision);
 }
 
-static void	set_flag(t_flags *flags, const char **fmt, va_list args)
+static void	set_flags(t_flags *flags, const char **fmt)
 {
 	while (**fmt == '-' || **fmt == '0')
 	{
@@ -57,6 +57,11 @@ static void	set_flag(t_flags *flags, const char **fmt, va_list args)
 			(*fmt)++;
 		}
 	}
+}
+
+static void	set_arg(t_flags *flags, const char **fmt, va_list args)
+{
+	set_flags(flags, fmt);
 	if (ft_isdigit(**fmt) || **fmt == '*')
 	{
 		flags->min_field_width = 1;
@@ -78,6 +83,6 @@ t_flags		*parse_flags(const char **fmt, va_list args)
 	flags = ft_calloc(1, sizeof(t_flags));
 	if (!flags)
 		return (NULL);
-	set_flag(flags, fmt, args);
+	set_arg(flags, fmt, args);
 	return (flags);
 }
