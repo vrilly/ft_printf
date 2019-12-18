@@ -6,7 +6,7 @@
 #    By: tjans <tjans@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 18:31:12 by tjans         #+#    #+#                  #
-#    Updated: 2019/12/09 14:14:50 by tjans         ########   odam.nl          #
+#    Updated: 2019/12/18 15:32:49 by tjans         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR := obj
 NAME	:= libftprintf.a
 VPATH	:= $(SRC_DIR)
 
-CFLAGS	:=	-g -c -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out
+CFLAGS	:=	-c -Wall -Wextra -I $(INC_DIR) -I $(LIBFT)/out
 
 S_PRINTF	:= printf.c parse_flag.c ctable.c nconv.c printer.c
 S_CONV		:= p_sign.c p_str.c p_int.c p_char.c p_uint.c p_ptr.c p_hex.c
@@ -44,7 +44,7 @@ $(NAME): $(addprefix $(OBJ_DIR)/,$(OBJS))
 clean:
 	@echo Removed intermediates
 	@$(RM) $(addprefix $(OBJ_DIR)/,$(OBJS))
-	@rmdir $(OBJ_DIR)
+	@$(RM) -r $(OBJ_DIR)
 
 fclean: clean
 	@echo Removed output
